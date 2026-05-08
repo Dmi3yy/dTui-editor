@@ -1,0 +1,164 @@
+<?php return [
+    'version' => '3.2.2',
+    'default_profile' => 'full',
+    'default_theme' => 'auto',
+    'default_editor_mode' => 'wysiwyg',
+    'default_height' => '500px',
+    'default_edit_type' => 'wysiwyg',
+    'default_preview_style' => 'vertical',
+    'default_language' => 'en-US',
+    'languages' => [
+        'ar' => 'ar',
+        'cs' => 'cs-CZ',
+        'de' => 'de-DE',
+        'es' => 'es-ES',
+        'fi' => 'fi-FI',
+        'fr' => 'fr-FR',
+        'hr' => 'hr-HR',
+        'it' => 'it-IT',
+        'ja' => 'ja-JP',
+        'ko' => 'ko-KR',
+        'nl' => 'nl-NL',
+        'pl' => 'pl-PL',
+        'pt' => 'pt-BR',
+        'ru' => 'ru-RU',
+        'sv' => 'sv-SE',
+        'tr' => 'tr-TR',
+        'uk' => 'uk-UA',
+        'zh' => 'zh-CN',
+    ],
+    'usage_statistics' => false,
+    'routes' => [
+        'evo_link_search' => 'dtui-evo-link-search',
+        'image_upload' => 'dtui-image-upload',
+        'plantuml_renderer' => 'dtui-plantuml',
+    ],
+    'themes' => [
+        'lightness' => ['label' => 'lightness (all light)', 'dark' => false],
+        'light' => ['label' => 'light (dark header)', 'dark' => false],
+        'dark' => ['label' => 'dark (dark header/tree)', 'dark' => true],
+        'darkness' => ['label' => 'darkness (all dark)', 'dark' => true],
+        'auto' => ['label' => 'auto (manager)', 'dark' => null],
+    ],
+    'editor_modes' => [
+        'markdown' => ['label' => 'Markdown only'],
+        'split' => ['label' => 'Markdown + preview'],
+        'wysiwyg' => ['label' => 'WYSIWYG only'],
+    ],
+    'plugins' => [
+        'chart' => [
+            'label' => 'Chart',
+            'enabled' => false,
+            'options' => [
+                'minWidth' => 100,
+                'maxWidth' => 600,
+                'minHeight' => 100,
+                'maxHeight' => 300,
+            ],
+        ],
+        'codeSyntaxHighlight' => [
+            'label' => 'Code syntax highlight',
+            'enabled' => true,
+            'options' => [
+                'languages' => ['html', 'css', 'scss', 'javascript', 'typescript', 'php', 'sql', 'json', 'markdown', 'bash', 'yaml'],
+                'aliases' => [
+                    'html' => ['markup', 'xml'],
+                    'javascript' => ['js'],
+                    'typescript' => ['ts'],
+                    'markdown' => ['md'],
+                    'bash' => ['sh', 'shell'],
+                    'yaml' => ['yml'],
+                ],
+            ],
+        ],
+        'colorSyntax' => [
+            'label' => 'Color syntax',
+            'enabled' => true,
+            'options' => [],
+        ],
+        'tableMergedCell' => [
+            'label' => 'Table merged cell',
+            'enabled' => true,
+            'options' => [],
+        ],
+        'uml' => [
+            'label' => 'UML',
+            'enabled' => true,
+            'options' => [
+                'rendererURL' => 'https://www.plantuml.com/plantuml/png/',
+                'darkTheme' => true,
+            ],
+        ],
+        'image' => [
+            'label' => 'EVO image picker',
+            'enabled' => true,
+            'options' => [
+                'urlStrategy' => 'relative',
+                'allowSignedUrls' => false,
+                'allowMcpukFallback' => true,
+                'pasteUpload' => true,
+                'uploadPath' => 'assets/images',
+            ],
+        ],
+        'evolinks' => [
+            'label' => 'EVO links',
+            'enabled' => true,
+            'options' => [
+                'minChars' => 2,
+                'debounce' => 250,
+                'limit' => 10,
+                'outputMode' => 'placeholder',
+                'includeUnpublished' => false,
+                'includeHidden' => false,
+            ],
+        ],
+    ],
+    'profiles' => [
+        'full' => [
+            'label' => 'Full',
+            'plugins' => ['codeSyntaxHighlight', 'colorSyntax', 'tableMergedCell', 'uml', 'image', 'evolinks'],
+            'options' => [
+                'height' => '500px',
+                'toolbarItems' => [
+                    ['heading', 'bold', 'italic', 'strike'],
+                    ['hr', 'quote'],
+                    ['ul', 'ol', 'task', 'indent', 'outdent'],
+                    ['table', 'image', 'link'],
+                    ['code', 'codeblock'],
+                ],
+            ],
+        ],
+        'mini' => [
+            'label' => 'Mini',
+            'plugins' => ['image', 'evolinks'],
+            'options' => [
+                'height' => '250px',
+                'toolbarItems' => [
+                    ['bold', 'italic', 'strike'],
+                    ['ul', 'ol'],
+                    ['image', 'link'],
+                ],
+            ],
+        ],
+        'introtext' => [
+            'label' => 'Intro',
+            'plugins' => ['image', 'evolinks'],
+            'options' => [
+                'height' => '220px',
+                'toolbarItems' => [
+                    ['bold', 'italic'],
+                    ['ul', 'ol'],
+                    ['link'],
+                ],
+            ],
+        ],
+        'custom' => [
+            'label' => 'Custom',
+            'plugins' => ['image', 'evolinks'],
+            'options' => [
+                'height' => '300px',
+            ],
+        ],
+    ],
+    'protected_keys' => ['el', 'initialValue', 'events', 'hooks', 'plugins'],
+];

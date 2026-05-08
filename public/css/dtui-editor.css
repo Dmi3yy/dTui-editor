@@ -1,0 +1,726 @@
+.dtui-editor {
+    --dtui-toolbar-bg: #f7f8fa;
+    --dtui-toolbar-border: #dadde3;
+    --dtui-editor-surface-bg: #fff;
+    --dtui-button-color: #343a40;
+    --dtui-button-border: transparent;
+    --dtui-button-active-bg: rgba(33, 150, 243, .12);
+    --dtui-button-active-border: transparent;
+    --dtui-button-hover-bg: rgba(33, 150, 243, .07);
+    --dtui-button-hover-border: #c8ccd1;
+    --dtui-button-disabled-opacity: .34;
+}
+
+.lightness .dtui-editor,
+.dtui-editor[data-dtui-theme-mode="lightness"] {
+    --dtui-toolbar-bg: #f9f9f9;
+    --dtui-toolbar-border: #d7dce2;
+    --dtui-editor-surface-bg: #fff;
+    --dtui-button-color: #2f353d;
+    --dtui-button-active-bg: rgba(0, 169, 255, .13);
+    --dtui-button-active-border: transparent;
+    --dtui-button-hover-bg: rgba(0, 169, 255, .07);
+    --dtui-button-hover-border: transparent;
+    --dtui-button-disabled-opacity: .32;
+}
+
+.light .dtui-editor,
+.dtui-editor[data-dtui-theme-mode="light"] {
+    --dtui-toolbar-bg: #f0f2f5;
+    --dtui-toolbar-border: #cfd5dc;
+    --dtui-editor-surface-bg: #fff;
+    --dtui-button-color: #252b33;
+    --dtui-button-active-bg: rgba(0, 169, 255, .14);
+    --dtui-button-active-border: transparent;
+    --dtui-button-hover-bg: rgba(0, 169, 255, .08);
+    --dtui-button-hover-border: transparent;
+    --dtui-button-disabled-opacity: .34;
+}
+
+.dark .dtui-editor,
+.dtui-editor[data-dtui-theme-mode="dark"] {
+    --dtui-toolbar-bg: #212328;
+    --dtui-toolbar-border: #383d45;
+    --dtui-editor-surface-bg: #111;
+    --dtui-button-color: #f1f3f5;
+    --dtui-button-active-bg: rgba(103, 204, 255, .16);
+    --dtui-button-active-border: transparent;
+    --dtui-button-hover-bg: rgba(255, 255, 255, .12);
+    --dtui-button-hover-border: transparent;
+    --dtui-button-disabled-opacity: .42;
+}
+
+.darkness .dtui-editor,
+.dtui-editor[data-dtui-theme-mode="darkness"] {
+    --dtui-toolbar-bg: #17191d;
+    --dtui-toolbar-border: #30343b;
+    --dtui-editor-surface-bg: #111;
+    --dtui-button-color: #f1f3f5;
+    --dtui-button-active-bg: rgba(103, 204, 255, .18);
+    --dtui-button-active-border: transparent;
+    --dtui-button-hover-bg: rgba(255, 255, 255, .14);
+    --dtui-button-hover-border: transparent;
+    --dtui-button-disabled-opacity: .44;
+}
+
+.dtui-editor .toastui-editor-defaultUI {
+    overflow: hidden;
+}
+
+.dtui-editor .toastui-editor-main {
+    margin-bottom: 28px;
+}
+
+.dtui-editor .toastui-editor-defaultUI::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    height: 28px;
+    border-top: 1px solid var(--dtui-toolbar-border);
+    border-radius: 0 0 3px 3px;
+    background: var(--dtui-editor-surface-bg);
+    content: "";
+}
+
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-mode-switch,
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-mode-switch,
+.dtui-editor[data-dtui-editor-mode="wysiwyg"] .toastui-editor-mode-switch {
+    display: none !important;
+}
+
+.dtui-editor .dtui-editor-mode-switcher {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    z-index: 35;
+    display: inline-flex;
+    align-items: flex-end;
+    height: 28px;
+    max-width: calc(100% - 20px);
+    overflow: hidden;
+    font-size: 12px;
+    text-align: right;
+}
+
+.dtui-editor .dtui-editor-mode-switcher button {
+    box-sizing: border-box;
+    height: 24px;
+    min-width: 96px;
+    width: 96px;
+    margin: -1px -1px 0 0;
+    padding: 0 10px;
+    color: #969aa5;
+    border: 1px solid var(--dtui-toolbar-border);
+    border-radius: 0 0 4px 4px;
+    background: #f7f9fc;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.dtui-editor .dtui-editor-mode-switcher button:first-child {
+    margin-left: 0;
+}
+
+.dtui-editor .dtui-editor-mode-switcher button:hover,
+.dtui-editor .dtui-editor-mode-switcher button:focus {
+    color: var(--dtui-button-color);
+    outline: none;
+}
+
+.dtui-editor .dtui-editor-mode-switcher button.active {
+    color: #555;
+    border-top-color: var(--dtui-editor-surface-bg);
+    background: var(--dtui-editor-surface-bg);
+    font-weight: 700;
+}
+
+.dtui-editor[data-dtui-theme-mode="dark"] .dtui-editor-mode-switcher button,
+.dtui-editor[data-dtui-theme-mode="darkness"] .dtui-editor-mode-switcher button,
+.dark .dtui-editor .dtui-editor-mode-switcher button,
+.darkness .dtui-editor .dtui-editor-mode-switcher button {
+    color: #757a86;
+    border-color: #393b42;
+    background: #232428;
+}
+
+.dtui-editor[data-dtui-theme-mode="dark"] .dtui-editor-mode-switcher button:hover,
+.dtui-editor[data-dtui-theme-mode="darkness"] .dtui-editor-mode-switcher button:hover,
+.dark .dtui-editor .dtui-editor-mode-switcher button:hover,
+.darkness .dtui-editor .dtui-editor-mode-switcher button:hover,
+.dtui-editor[data-dtui-theme-mode="dark"] .dtui-editor-mode-switcher button:focus,
+.dtui-editor[data-dtui-theme-mode="darkness"] .dtui-editor-mode-switcher button:focus,
+.dark .dtui-editor .dtui-editor-mode-switcher button:focus,
+.darkness .dtui-editor .dtui-editor-mode-switcher button:focus {
+    color: #eee;
+}
+
+.dtui-editor[data-dtui-theme-mode="dark"] .dtui-editor-mode-switcher button.active,
+.dtui-editor[data-dtui-theme-mode="darkness"] .dtui-editor-mode-switcher button.active,
+.dark .dtui-editor .dtui-editor-mode-switcher button.active,
+.darkness .dtui-editor .dtui-editor-mode-switcher button.active {
+    color: #eee;
+    border-top-color: var(--dtui-editor-surface-bg);
+    background: var(--dtui-editor-surface-bg);
+}
+
+.dtui-editor .toastui-editor-md-tab-container,
+.dtui-editor .toastui-editor-main .toastui-editor-md-tab-style > .toastui-editor-tabs,
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-md-tab-container,
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-main .toastui-editor-md-tab-style > .toastui-editor-tabs,
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-main .toastui-editor-md-tab-style > .toastui-editor-md-preview,
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-main .toastui-editor-md-splitter {
+    display: none !important;
+}
+
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-main .toastui-editor-md-tab-style > .toastui-editor {
+    display: block !important;
+    width: 100% !important;
+}
+
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-md-container .toastui-editor,
+.dtui-editor[data-dtui-editor-mode="markdown"] .toastui-editor-main-container {
+    width: 100% !important;
+}
+
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-main .toastui-editor-md-tab-style,
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-main .toastui-editor-md-vertical-style {
+    display: flex !important;
+}
+
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-main .toastui-editor-md-vertical-style > .toastui-editor,
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-main .toastui-editor-md-vertical-style > .toastui-editor-md-preview {
+    width: 50%;
+}
+
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-main .toastui-editor-md-vertical-style > .toastui-editor-md-preview,
+.dtui-editor[data-dtui-editor-mode="split"] .toastui-editor-main .toastui-editor-md-splitter {
+    display: block !important;
+}
+
+.dtui-editor[data-dtui-editor-mode="wysiwyg"] .toastui-editor-ww-container {
+    display: block;
+}
+
+.dtui-editor .toastui-editor-toolbar {
+    background: var(--dtui-toolbar-bg);
+    border-color: var(--dtui-toolbar-border);
+    height: 29px !important;
+    min-height: 29px;
+    max-height: 29px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: var(--dtui-toolbar-bg);
+    border-color: var(--dtui-toolbar-border);
+    gap: 0;
+    height: 28px !important;
+    min-height: 28px;
+    max-height: 28px;
+    padding: 0 1px;
+    overflow: hidden;
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar button {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    color: var(--dtui-button-color);
+    border: 0 !important;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons {
+    border-color: transparent;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled):hover {
+    border-color: var(--dtui-button-hover-border);
+    background-color: var(--dtui-button-hover-bg);
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled).active {
+    border-color: var(--dtui-button-active-border);
+    background-color: var(--dtui-button-active-bg);
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar button:focus,
+.dtui-editor .toastui-editor-defaultUI-toolbar button:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar button:disabled {
+    cursor: default;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.dtui-editor .toastui-editor-defaultUI-toolbar .scroll-sync,
+.dtui-editor .toastui-editor-defaultUI-toolbar .toastui-editor-toolbar-group:has(.scroll-sync) {
+    display: none;
+}
+
+.dtui-editor .toastui-editor-toolbar-group {
+    display: inline-flex;
+    align-items: flex-start;
+    height: 28px;
+    min-height: 28px;
+    max-height: 28px;
+    margin: 0 2px 0 0;
+    white-space: nowrap;
+}
+
+.dtui-editor .toastui-editor-toolbar-divider {
+    height: 20px;
+    margin: 4px 4px 4px 2px;
+}
+
+.dtui-editor .toastui-editor-toolbar-item-wrapper {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons {
+    box-sizing: border-box;
+    flex: 0 0 28px;
+    width: 28px !important;
+    min-width: 28px;
+    height: 28px !important;
+    min-height: 28px;
+    margin: 0;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 4px;
+    line-height: 20px;
+    vertical-align: top;
+    background-color: transparent;
+    background-position-y: 1px !important;
+    transition: background-color .12s ease, border-color .12s ease, opacity .12s ease;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons:disabled {
+    opacity: var(--dtui-button-disabled-opacity);
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons:not(:disabled):hover {
+    border-color: var(--dtui-button-hover-border);
+    background-color: var(--dtui-button-hover-bg);
+}
+
+.dtui-editor .toastui-editor-toolbar-icons:not(:disabled).active {
+    border-color: var(--dtui-button-active-border);
+    background-color: var(--dtui-button-active-bg);
+    background-position-y: -25px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.heading {
+    background-position-x: 1px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.bold {
+    background-position-x: -25px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.italic {
+    background-position-x: -51px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.strike {
+    background-position-x: -77px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.hrline {
+    background-position-x: -103px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.quote {
+    background-position-x: -129px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.bullet-list {
+    background-position-x: -155px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.ordered-list {
+    background-position-x: -181px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.task-list {
+    background-position-x: -207px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.indent {
+    background-position-x: -233px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.outdent {
+    background-position-x: -259px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.table {
+    background-position-x: -285px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.image {
+    background-position-x: -311px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.link {
+    background-position-x: -336px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.code {
+    background-position-x: -363px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.codeblock {
+    background-position-x: -390px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.more {
+    background-position-x: -414px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dtui-button-color);
+    border: 0 !important;
+    background-image: none !important;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button {
+    font-size: 11px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button {
+    font-size: 13px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button {
+    font-size: 10px !important;
+}
+
+.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button:hover,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button:hover,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button:hover,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button:focus,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button:focus,
+.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button:focus {
+    border-color: var(--dtui-button-hover-border);
+    background-color: var(--dtui-button-hover-bg);
+    outline: none;
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-defaultUI-toolbar,
+.toastui-editor-dark.dtui-editor .toastui-editor-defaultUI-toolbar,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-defaultUI-toolbar,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-defaultUI-toolbar {
+    background-color: var(--dtui-toolbar-bg);
+    border-color: var(--dtui-toolbar-border);
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons,
+.toastui-editor-dark.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:disabled,
+.toastui-editor-dark.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:disabled,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:disabled,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:disabled {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled):hover,
+.toastui-editor-dark.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled):hover,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled):hover,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled):hover {
+    border-color: var(--dtui-button-hover-border);
+    background-color: var(--dtui-button-hover-bg);
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled).active,
+.toastui-editor-dark.dtui-editor .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled).active,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled).active,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-defaultUI-toolbar button.toastui-editor-toolbar-icons:not(:disabled).active {
+    border-color: var(--dtui-button-active-border);
+    background-color: var(--dtui-button-active-bg);
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons {
+    border-color: transparent;
+    background-color: transparent;
+    background-position-y: -49px !important;
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons:disabled,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons:disabled,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons:disabled,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons:disabled {
+    opacity: var(--dtui-button-disabled-opacity);
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons:not(:disabled):hover,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons:not(:disabled):hover,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons:not(:disabled):hover,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons:not(:disabled):hover {
+    border-color: var(--dtui-button-hover-border);
+    background-color: var(--dtui-button-hover-bg);
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons:not(:disabled).active,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons:not(:disabled).active,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons:not(:disabled).active,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons:not(:disabled).active {
+    border-color: var(--dtui-button-active-border);
+    background-color: var(--dtui-button-active-bg);
+    background-position-y: -75px !important;
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-image-button,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-evolinks-button,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-uml-button,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-image-button,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-evolinks-button,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-uml-button,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-image-button,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-evolinks-button,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-uml-button {
+    color: var(--dtui-button-color);
+}
+
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-image-button:hover,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-evolinks-button:hover,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-uml-button:hover,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-image-button:focus,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-evolinks-button:focus,
+.dtui-editor .toastui-editor-dark .toastui-editor-toolbar-icons.dtui-uml-button:focus,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button:hover,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button:hover,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button:hover,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-image-button:focus,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-evolinks-button:focus,
+.toastui-editor-dark.dtui-editor .toastui-editor-toolbar-icons.dtui-uml-button:focus,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-image-button:hover,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-evolinks-button:hover,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-uml-button:hover,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-image-button:focus,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-evolinks-button:focus,
+.dtui-editor[data-dtui-theme-mode="dark"] .toastui-editor-toolbar-icons.dtui-uml-button:focus,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-image-button:hover,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-evolinks-button:hover,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-uml-button:hover,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-image-button:focus,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-evolinks-button:focus,
+.dtui-editor[data-dtui-theme-mode="darkness"] .toastui-editor-toolbar-icons.dtui-uml-button:focus {
+    border-color: var(--dtui-button-hover-border);
+    background-color: var(--dtui-button-hover-bg);
+}
+
+.dtui-editor .toastui-editor-contents figure.dtui-uml {
+    margin: 1em 0;
+}
+
+.dtui-editor .toastui-editor-contents figure.dtui-uml img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dtui-editor .toastui-editor-dark pre,
+.dtui-editor .toastui-editor-dark code,
+.dtui-editor .toastui-editor-dark pre *,
+.dtui-editor .toastui-editor-dark code *,
+.dtui-editor .toastui-editor-dark .token,
+.dtui-editor .toastui-editor-dark .token *,
+.toastui-editor-dark.dtui-editor pre,
+.toastui-editor-dark.dtui-editor code,
+.toastui-editor-dark.dtui-editor pre *,
+.toastui-editor-dark.dtui-editor code *,
+.toastui-editor-dark.dtui-editor .token,
+.toastui-editor-dark.dtui-editor .token *,
+.dtui-editor[data-dtui-theme-mode="dark"] pre,
+.dtui-editor[data-dtui-theme-mode="dark"] code,
+.dtui-editor[data-dtui-theme-mode="dark"] pre *,
+.dtui-editor[data-dtui-theme-mode="dark"] code *,
+.dtui-editor[data-dtui-theme-mode="dark"] .token,
+.dtui-editor[data-dtui-theme-mode="dark"] .token *,
+.dtui-editor[data-dtui-theme-mode="darkness"] pre,
+.dtui-editor[data-dtui-theme-mode="darkness"] code,
+.dtui-editor[data-dtui-theme-mode="darkness"] pre *,
+.dtui-editor[data-dtui-theme-mode="darkness"] code *,
+.dtui-editor[data-dtui-theme-mode="darkness"] .token,
+.dtui-editor[data-dtui-theme-mode="darkness"] .token * {
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+.dtui-editor .toastui-editor-dark .token.operator,
+.dtui-editor .toastui-editor-dark .token.entity,
+.dtui-editor .toastui-editor-dark .token.url,
+.dtui-editor .toastui-editor-dark .token.variable,
+.dtui-editor .toastui-editor-dark .language-css .token.string,
+.dtui-editor .toastui-editor-dark .style .token.string,
+.toastui-editor-dark.dtui-editor .token.operator,
+.toastui-editor-dark.dtui-editor .token.entity,
+.toastui-editor-dark.dtui-editor .token.url,
+.toastui-editor-dark.dtui-editor .token.variable,
+.toastui-editor-dark.dtui-editor .language-css .token.string,
+.toastui-editor-dark.dtui-editor .style .token.string,
+.dtui-editor[data-dtui-theme-mode="dark"] .token.operator,
+.dtui-editor[data-dtui-theme-mode="dark"] .token.entity,
+.dtui-editor[data-dtui-theme-mode="dark"] .token.url,
+.dtui-editor[data-dtui-theme-mode="dark"] .token.variable,
+.dtui-editor[data-dtui-theme-mode="dark"] .language-css .token.string,
+.dtui-editor[data-dtui-theme-mode="dark"] .style .token.string,
+.dtui-editor[data-dtui-theme-mode="darkness"] .token.operator,
+.dtui-editor[data-dtui-theme-mode="darkness"] .token.entity,
+.dtui-editor[data-dtui-theme-mode="darkness"] .token.url,
+.dtui-editor[data-dtui-theme-mode="darkness"] .token.variable,
+.dtui-editor[data-dtui-theme-mode="darkness"] .language-css .token.string,
+.dtui-editor[data-dtui-theme-mode="darkness"] .style .token.string {
+    background: transparent !important;
+}
+
+.dtui-evolinks-overlay {
+    --dtui-link-overlay-bg: rgba(0, 0, 0, .25);
+    --dtui-link-dialog-bg: #fff;
+    --dtui-link-dialog-border: #cfd4da;
+    --dtui-link-dialog-text: #222;
+    --dtui-link-muted: #6c757d;
+    --dtui-link-field-bg: #fff;
+    --dtui-link-field-border: #cfd4da;
+    --dtui-link-field-text: #222;
+    --dtui-link-field-focus: rgba(0, 123, 255, .25);
+    --dtui-link-primary-bg: #0d6efd;
+    --dtui-link-primary-border: #0a58ca;
+    --dtui-link-secondary-bg: #fff;
+    --dtui-link-secondary-border: #cfd4da;
+    --dtui-link-secondary-text: #222;
+    background: var(--dtui-link-overlay-bg);
+}
+
+.dark .dtui-evolinks-overlay,
+.darkness .dtui-evolinks-overlay,
+.dtui-evolinks-overlay[data-dtui-theme-mode="dark"],
+.dtui-evolinks-overlay[data-dtui-theme-mode="darkness"] {
+    --dtui-link-overlay-bg: rgba(0, 0, 0, .48);
+    --dtui-link-dialog-bg: #202328;
+    --dtui-link-dialog-border: #4a4f58;
+    --dtui-link-dialog-text: #f1f3f5;
+    --dtui-link-muted: #aeb6bf;
+    --dtui-link-field-bg: #15171a;
+    --dtui-link-field-border: #4a4f58;
+    --dtui-link-field-text: #f1f3f5;
+    --dtui-link-field-focus: rgba(103, 204, 255, .28);
+    --dtui-link-primary-bg: #1d8fe8;
+    --dtui-link-primary-border: #47adff;
+    --dtui-link-secondary-bg: #262a30;
+    --dtui-link-secondary-border: #565d68;
+    --dtui-link-secondary-text: #f1f3f5;
+}
+
+.dtui-evolinks-dialog {
+    box-sizing: border-box;
+    padding: 16px;
+    color: var(--dtui-link-dialog-text);
+    background: var(--dtui-link-dialog-bg);
+    border: 1px solid var(--dtui-link-dialog-border);
+    border-radius: 4px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .22);
+}
+
+.dtui-evolinks-dialog input,
+.dtui-evolinks-dialog select {
+    box-sizing: border-box;
+    height: auto;
+    min-height: 36px;
+    padding: 6px 10px;
+    color: var(--dtui-link-field-text);
+    background: var(--dtui-link-field-bg);
+    border: 1px solid var(--dtui-link-field-border);
+    border-radius: 2px;
+}
+
+.dtui-evolinks-dialog select {
+    min-height: 180px;
+}
+
+.dtui-evolinks-dialog input:focus,
+.dtui-evolinks-dialog select:focus {
+    border-color: var(--dtui-link-primary-border);
+    box-shadow: 0 0 0 3px var(--dtui-link-field-focus);
+    outline: none;
+}
+
+.dtui-evolinks-dialog .btn {
+    min-width: 76px;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.dtui-evolinks-dialog .btn-primary {
+    color: #fff;
+    background: var(--dtui-link-primary-bg);
+    border: 1px solid var(--dtui-link-primary-border);
+}
+
+.dtui-evolinks-dialog .btn-secondary {
+    color: var(--dtui-link-secondary-text);
+    background: var(--dtui-link-secondary-bg);
+    border: 1px solid var(--dtui-link-secondary-border);
+}
+
+.dtui-evolinks-dialog .btn:disabled {
+    cursor: default;
+    opacity: .55;
+}

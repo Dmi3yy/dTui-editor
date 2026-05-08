@@ -1,0 +1,30 @@
+{
+  "name": "dmi3yy/dtui-editor",
+  "license": "MIT",
+  "type": "evolutioncms-plugin",
+  "description": "TOAST UI Editor integration for Evolution CMS",
+  "keywords": [
+    "evo",
+    "evocms",
+    "evolution-cms",
+    "toast-ui",
+    "tui-editor",
+    "editor"
+  ],
+  "require": {
+    "php": "^8.3",
+    "evolution-cms/evolution": "^3.5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "EvolutionCMS\\dTuiEditor\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "EvolutionCMS\\dTuiEditor\\DTuiEditorServiceProvider"
+      ]
+    }
+  }
+}
