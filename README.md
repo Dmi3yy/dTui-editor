@@ -1,6 +1,6 @@
 # dTui.editor
 
-TOAST UI Editor 3 integration for Evolution CMS 3.5.2+.
+TOAST UI Editor 3 integration for Evolution CMS 3.5.7+.
 
 The package replaces the manager rich text editor with a self-hosted TOAST UI Editor build and adds Evolution CMS conveniences on top: EVO resource links, manager image browser support, paste-to-upload images, UML diagrams, syntax highlighting, table merge support, multilingual UI assets, and theme-aware styling for the four Evolution manager themes.
 
@@ -26,7 +26,7 @@ The package replaces the manager rich text editor with a self-hosted TOAST UI Ed
 ## Requirements
 
 - PHP 8.3+
-- Evolution CMS 3.5.2+
+- Evolution CMS 3.5.7+
 - Composer 2.2+
 - A published `assets/plugins/dTui.editor` directory
 
