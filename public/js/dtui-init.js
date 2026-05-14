@@ -541,7 +541,7 @@
         var prism = window.Prism;
         var requested = Array.isArray(options.languages) && options.languages.length
             ? options.languages
-            : ['html', 'css', 'scss', 'javascript', 'typescript', 'php', 'sql', 'json', 'markdown', 'bash', 'yaml'];
+            : ['html', 'css', 'scss', 'javascript', 'typescript', 'php', 'blade', 'sql', 'json', 'markdown', 'bash', 'yaml'];
         var aliases = options.aliases || {};
         var languages = {};
 

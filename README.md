@@ -4,6 +4,8 @@ TOAST UI Editor 3 integration for Evolution CMS 3.5.7+.
 
 The package replaces the manager rich text editor with a self-hosted TOAST UI Editor build and adds Evolution CMS conveniences on top: EVO resource links, manager image browser support, paste-to-upload images, UML diagrams, syntax highlighting, table merge support, multilingual UI assets, and theme-aware styling for the four Evolution manager themes.
 
+Full dDocs-ready package documentation lives in [`docs/`](docs/README.md).
+
 ## Features
 
 - Markdown and WYSIWYG editing through TOAST UI Editor 3.2.2.
@@ -216,7 +218,7 @@ echo 'Hello Evolution CMS';
 ```
 ````
 
-Bundled Prism assets are intentionally limited to common web/content languages: HTML/XML, CSS, SCSS, JavaScript, TypeScript, PHP, SQL, JSON, Markdown, Bash, and YAML. The package uses the lean TOAST UI code syntax plugin with a local Prism highlighter instead of the all-languages bundle, which keeps Safari and Evolution manager pages responsive. Aliases such as `js`, `ts`, `md`, `sh`, `shell`, `yml`, `markup`, and `xml` still work for fenced code blocks without expanding the visible language list.
+Bundled Prism assets are intentionally limited to common web/content languages: HTML/XML, CSS, SCSS, JavaScript, TypeScript, PHP, Blade, SQL, JSON, Markdown, Bash, and YAML. The package uses the lean TOAST UI code syntax plugin with a local Prism highlighter instead of the all-languages bundle, which keeps Safari and Evolution manager pages responsive. Aliases such as `js`, `ts`, `laravel-blade`, `bladephp`, `md`, `sh`, `shell`, `yml`, `markup`, and `xml` still work for fenced code blocks without expanding the visible language list.
 
 Dark manager themes remove Prism text shadows so code stays readable inside Evolution's dark editor surface.
 

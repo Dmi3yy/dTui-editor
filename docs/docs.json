@@ -1,0 +1,20 @@
+{
+  "package": "dTui Editor",
+  "source": "docs",
+  "locales": {
+    "en": "complete",
+    "uk": "complete",
+    "pl": "complete",
+    "de": "complete",
+    "fr": "complete"
+  },
+  "required_pages": [
+    "README.md",
+    "user-guide.md",
+    "developer-guide.md",
+    "configuration.md",
+    "reference.md",
+    "frontend-guide.md",
+    "troubleshooting.md"
+  ]
+}

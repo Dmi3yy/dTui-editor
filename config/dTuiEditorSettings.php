@@ -60,11 +60,12 @@
             'label' => 'Code syntax highlight',
             'enabled' => true,
             'options' => [
-                'languages' => ['html', 'css', 'scss', 'javascript', 'typescript', 'php', 'sql', 'json', 'markdown', 'bash', 'yaml'],
+                'languages' => ['html', 'css', 'scss', 'javascript', 'typescript', 'php', 'blade', 'sql', 'json', 'markdown', 'bash', 'yaml'],
                 'aliases' => [
                     'html' => ['markup', 'xml'],
                     'javascript' => ['js'],
                     'typescript' => ['ts'],
+                    'blade' => ['laravel-blade', 'bladephp'],
                     'markdown' => ['md'],
                     'bash' => ['sh', 'shell'],
                     'yaml' => ['yml'],
