@@ -13,12 +13,17 @@ class DTuiEditorServiceProvider extends ServiceProvider
         $this->root = dirname(__DIR__);
     }
 
+    /**
+     * Register editor configuration, views and routes for every request.
+     *
+     * Runtime assets are synchronized only when editor tags are rendered, so
+     * frontend requests that do not use the editor avoid a filesystem scan.
+     */
     public function boot(): void
     {
         $this->mergeConfigFrom($this->root . '/config/dTuiEditorCheck.php', 'cms.settings');
         $this->loadViewsFrom($this->root . '/views', 'dTuiEditor');
         $this->registerRoutes();
-        $this->ensureRuntimeAssetsArePublished();
 
         if ($this->app->runningInConsole()) {
             $this->publishResources();
@@ -73,14 +78,26 @@ class DTuiEditorServiceProvider extends ServiceProvider
         return $files;
     }
 
-    protected function ensureRuntimeAssetsArePublished(): void
+    /**
+     * Synchronize editor assets when they are needed to render an editor.
+     *
+     * The editor can be used outside the manager, so publishing is triggered
+     * by asset rendering rather than by the request context. Repeated editor
+     * fields in the same request only need one synchronization pass per public
+     * directory. Missing files are linked or copied into the public directory.
+     */
+    public static function ensureRuntimeAssetsArePublished(): void
     {
-        $sourceDir = $this->root . '/public';
+        static $checkedTargets = [];
+
+        $sourceDir = dirname(__DIR__) . '/public';
         $targetDir = public_path('assets/plugins/dTui.editor');
 
-        if (!is_dir($sourceDir)) {
+        if (isset($checkedTargets[$targetDir]) || !is_dir($sourceDir)) {
             return;
         }
+
+        $checkedTargets[$targetDir] = true;
 
         $iterator = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($sourceDir, \FilesystemIterator::SKIP_DOTS)
@@ -97,14 +114,22 @@ class DTuiEditorServiceProvider extends ServiceProvider
             $path = $file->getPathname();
             $relative = substr($path, strlen($sourceDir) + 1);
 
-            $this->ensureRuntimeAsset(
+            self::ensureRuntimeAsset(
                 $path,
                 $targetDir . DIRECTORY_SEPARATOR . $relative
             );
         }
     }
 
-    protected function ensureRuntimeAsset(string $source, string $target): void
+    /**
+     * Link or refresh one published asset without replacing an up-to-date file.
+     *
+     * Symlinks are preferred; a file copy is used when linking is unavailable.
+     *
+     * @param string $source Absolute path to the package asset.
+     * @param string $target Absolute path in the public asset directory.
+     */
+    protected static function ensureRuntimeAsset(string $source, string $target): void
     {
         if (!is_file($source)) {
             return;

@@ -272,8 +272,22 @@ if (!function_exists('dTuiEditor_i18nAssetName')) {
 }
 
 if (!function_exists('dTuiEditor_assetTags')) {
+    /**
+     * Render the required editor assets, synchronizing them on first use.
+     *
+     * This is shared by manager and frontend editors. Published files are
+     * checked before their URLs are emitted, and repeated tags are omitted.
+     *
+     * @param array<string> $usedPlugins Plugins enabled for the current field.
+     * @param string $theme Active editor theme.
+     * @param string $language Editor interface language.
+     * @param array<string, mixed> $settings Editor configuration.
+     * @return array<string> HTML link and script tags.
+     */
     function dTuiEditor_assetTags(array $usedPlugins, string $theme, string $language, array $settings): array
     {
+        \EvolutionCMS\dTuiEditor\DTuiEditorServiceProvider::ensureRuntimeAssetsArePublished();
+
         $basePath = dTuiEditor_basePath() . 'assets/plugins/dTui.editor';
         $baseUrl = dTuiEditor_siteUrl() . 'assets/plugins/dTui.editor';
 
