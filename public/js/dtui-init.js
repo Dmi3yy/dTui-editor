@@ -466,8 +466,16 @@
             return Promise.reject(new Error('Image upload URL is not configured.'));
         }
 
+        var csrfMeta = document.querySelector('meta[name="csrf-token"]');
+        var csrfToken = normalizeString(csrfMeta && csrfMeta.getAttribute('content'))
+            || normalizeString(globalConfig.csrfToken);
+        if (!csrfToken) {
+            return Promise.reject(new Error('Security token expired. Reload the page and try again.'));
+        }
+
         var form = new FormData();
         form.append('image', blob, blob.name || 'pasted-image.png');
+        form.append('_token', csrfToken);
 
         return window.fetch(uploadUrl, {
             method: 'POST',

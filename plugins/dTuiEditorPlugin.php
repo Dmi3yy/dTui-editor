@@ -568,6 +568,7 @@ Event::listen('evolution.OnRichTextEditorInit', function ($params) {
         'plugins' => $pluginSettings,
         'evoLinkSearchUrl' => rtrim($siteBaseUrl . '/' . ltrim($settings['routes']['evo_link_search'] ?? 'dtui-evo-link-search', '/'), '/') . '/',
         'imageUploadUrl' => rtrim($siteBaseUrl . '/' . ltrim($settings['routes']['image_upload'] ?? 'dtui-image-upload', '/'), '/') . '/',
+        'csrfToken' => csrf_token(),
         'plantUmlRendererUrl' => rtrim($siteBaseUrl . '/' . ltrim($settings['routes']['plantuml_renderer'] ?? 'dtui-plantuml', '/'), '/') . '/',
         'whichBrowser' => $whichBrowser,
         'opener' => 'tinymce',

@@ -62,6 +62,12 @@ Les profils contrôlent toolbar, options TOAST UI et plugins actifs.
 `dtui-image-upload` écrit les images dans un `uploadPath` relatif sûr.
 `dtui-plantuml` adapte les diagrammes aux thèmes sombres du manager.
 
+Les uploads exigent une session manager, la permission d'upload et le middleware
+`VerifyCsrfToken` d'Evolution (Evolution CMS 3.5.8+). L'éditeur envoie `_token`
+depuis la balise meta `csrf-token`, ou la valeur `csrfToken` générée par
+`csrf_token()` dans sa configuration. Les requêtes sans jeton ou avec un jeton
+invalide sont rejetées avant le traitement de l'upload.
+
 ## Assets et Prism
 
 Les assets runtime se trouvent dans:

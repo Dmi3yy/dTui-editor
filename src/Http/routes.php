@@ -1,5 +1,6 @@
 <?php
 
+use EvolutionCMS\Middleware\VerifyCsrfToken;
 use EvolutionCMS\Models\SiteContent;
 use Illuminate\Support\Facades\Route;
 
@@ -324,7 +325,7 @@ Route::middleware(config('app.middleware.global', []))->get('dtui-evo-link-searc
     return response()->json($output);
 });
 
-Route::middleware(config('app.middleware.global', []))->post('dtui-image-upload', function () {
+Route::middleware(array_merge(config('app.middleware.global', []), [VerifyCsrfToken::class]))->post('dtui-image-upload', function () {
     if (!dTuiEditor_managerCanUploadImages()) {
         return dTuiEditor_uploadError('Forbidden', 403);
     }
