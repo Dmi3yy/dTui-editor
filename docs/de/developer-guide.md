@@ -63,6 +63,12 @@ Profile steuern Toolbar, TOAST UI options und aktive Plugins.
 `dtui-image-upload` speichert Bilder in einem sicheren relativen `uploadPath`.
 `dtui-plantuml` passt Diagramme für dunkle Manager-Themes an.
 
+Bild-Uploads benötigen eine Manager-Sitzung, die Upload-Berechtigung und Evolutions
+`VerifyCsrfToken`-Middleware (Evolution CMS 3.5.8+). Der Editor sendet `_token` aus
+dem Meta-Tag `csrf-token` oder ersatzweise den mit `csrf_token()` erzeugten
+Konfigurationswert `csrfToken`. Fehlende oder ungültige Tokens werden vor dem
+Upload-Handler abgewiesen.
+
 ## Assets und Prism
 
 Runtime-Assets liegen unter:

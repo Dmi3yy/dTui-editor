@@ -70,6 +70,12 @@ Profiles керують toolbar, TOAST UI options і plugin set. Plugin options 
 `dtui-plantuml` додає темну PlantUML skin для dark/darkness тем і робить redirect
 на renderer.
 
+Завантаження зображень потребує сесії менеджера, дозволу на завантаження та
+перевірки через штатний `VerifyCsrfToken` (Evolution CMS 3.5.8+). Редактор передає
+`_token` із метатега `csrf-token`, а за його відсутності — `csrfToken` із конфігурації
+ініціалізації, створений через `csrf_token()`. Запити без токена або з хибним
+токеном відхиляються до виконання обробника завантаження.
+
 ## Assets
 
 Runtime assets лежать у:
